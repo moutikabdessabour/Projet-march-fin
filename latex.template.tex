@@ -1,0 +1,56 @@
+\begin{enumerate}
+    \item Détermination du portefeuille de variance minimale :\\
+    On a $\sigma^2=\dfrac{1}{\gamma}$\\[-1ex]
+    Et on sait que  $\exists v \in \mathbb{R}^3_{\neq 0} \text{ tq : } x=\Sigma^{-1}\left(\dfrac{1}{\gamma} \ind+{\underbrace{\sqrt{\sigma^{2}-\dfrac{1}{\gamma}}}_{ =\, 0}} v\right)=\dfrac{1}{\gamma}  \Sigma^{-1}\ind$\\[-1ex]
+    Donc $x = \dfrac{\Sigma^{-1}\ind}{\ind^T\Sigma^{-1}\ind}$
+    \begin{flalign*}
+\text{Or on a } \Sigma &= @Sigma@ &
+    \end{flalign*}\\[-2\baselineskip]
+    \begin{flalign*}
+        \text{On retrouve } \Sigma^{-1} &=  @Sigma-1@& \\ 
+    \end{flalign*}\\[-4\baselineskip]
+    \begin{flalign*}
+        \text{Alors } x^{*} &= @xvarmin@&
+    \end{flalign*}
+
+    \item On a l'équation de la Frontière efficiente dans la cas d'absence d'actif sans risque $$\mathcal{F}_{e}=\bigg\{\big(E_{\max }^{\sigma}, \sigma\big), \sigma^{2} \geq \frac{1}{\ind^{T} \Sigma^{-1} \ind}\bigg\}$$
+    \begin{flalign*}
+        \text{Où } E_{\max }^{\sigma}&=\frac{\ind^{T} \Sigma^{-1} M}{\ind^{T} \Sigma^{-1} \ind}+\sqrt{M^{T} \Sigma^{-1} M-\frac{\left(\ind^{T} \Sigma^{-1} M\right)^{2}}{\ind^{T} \Sigma^{-1} \ind}}\,\sqrt{\vphantom{\frac{\left(\ind^{T} \Sigma^{-1} M\right)^{2}}{\ind^{T} \Sigma^{-1} \ind}}\sigma^{2}-\frac{1}{\ind^{T} \Sigma^{-1} \ind}} &\\
+        \text{Et on a } &\begin{dcases} 
+            \ind^{T} \Sigma^{-1} M = @prod.ind.m@ \\
+            M^{T} \Sigma^{-1} M = @beta@ \\
+            \ind^{T} \Sigma^{-1} \ind = @gamma@ \\
+        \end{dcases} \implies \begin{dcases}
+            \frac{1}{\ind^{T} \Sigma^{-1} \ind} = @gamma-1@ \\
+            \frac{\ind^{T} \Sigma^{-1} M}{\ind^{T} \Sigma^{-1} \ind} = @beta/gamma@ \\
+            \frac{\left(\ind^{T} \Sigma^{-1} M\right)^2}{\ind^{T} \Sigma^{-1} \ind} = @beta^2/gammma@
+        \end{dcases} &
+    \end{flalign*}
+    \begin{equation*}
+        \text{Donc }\quad E_{\max}^{\sigma} = @const@ + @coef.sigma@ \times \sqrt{\sigma^2 - (@sqrt/gamma@)^2} 
+    \end{equation*}
+    \item Introduction d'un actif sans risque de taux $R_f = @R_f@ $
+    \begin{enumerate}[label=(\alph*)]
+        \item La nouvelle équation de la frontière efficiente
+        $$\mathcal{F}_{e}=\bigg\{\big(E_{\max}^{\sigma} = R_{f}+\sigma\left\|M-R_{f} \ind\right\|_{\Sigma^{-1}}, \sigma\big)\bigg\}$$
+        \begin{flalign*}
+            \text{On a }E_{\max}^{\sigma} &= R_{f}+\sigma\left\|M-R_{f} \ind\right\|_{\Sigma^{-1}} &\\
+            \text{Et on a} \quad\;\,\! & \left\|M-R_{f} \ind\right\|_{\Sigma^{-1}} = @nnrm.means-R_f@ &\\
+            \text{Donc }  E_{\max}^{\sigma} &=  @R_f@ + @nnrm.means-R_f@\times \sigma
+        \end{flalign*}
+        Cette droite nommée \emph{Capital Market Line} représente la relation linéaire entre la rentabilité espérée $E$ et le risque $\sigma$ d'un portefeuille efficient.
+        \item Calculons la composition du portefeuille de marché:
+        \begin{flalign*}
+            x_{M}&=\frac{\Sigma^{-1}\left(M-R_{0} \ind\right)}{\ind^{T} \Sigma^{-1}\left(M-R_{0} \ind\right)} \\
+            \text{Or on a} & \begin{dcases}
+                \Sigma^{-1}\left(M-R_{0} \ind\right)  = @Sigma-1means-R_f@  \\
+                \ind^{T} \Sigma^{-1}\left(M-R_{0} \ind\right) = @prod.scal.means-R_f@
+            \end{dcases} &\\
+            \implies x_M &=@x_M@  \\
+            \implies &\begin{dcases}
+                E = x^T_M M = @x_M@^T @means@ = @t.x_M.means@ \\
+                \sigma = \sqrt{x^T_M\Sigma x_M} = @sigma@
+            \end{dcases}
+        \end{flalign*}
+    \end{enumerate}
+\end{enumerate}
